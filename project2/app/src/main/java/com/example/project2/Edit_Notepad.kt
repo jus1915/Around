@@ -46,50 +46,6 @@ class Edit_Notepad : AppCompatActivity() {
     var time: String? = null
     var position = 0
 
-    var locationManager : LocationManager? = null
-    private val REQUEST_CODE_LOCATION : Int = 2
-    var currentLocation : String = ""
-    var latitude : Double? = null
-    var longitude : Double? = null
-
-    private fun getCurrentLoc(){
-        locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager?
-        var userLocation: Location = getLatLng()
-        if (userLocation !=null){
-            latitude = userLocation.latitude
-            longitude = userLocation.longitude
-            Log.d("CheckCurrentLocation","현재 내 위치 값 : $latitude, $longitude")
-
-            var mGeocoder = Geocoder(applicationContext,Locale.KOREAN)
-            var mResultList: List<Address>? = null
-            try{
-                mResultList = mGeocoder.getFromLocation(
-                    latitude!!,longitude!!,1
-                )
-            } catch (e: IOException){
-                e.printStackTrace()
-            }
-            if (mResultList != null){
-                Log.d("CheckCurrentLocation", mResultList[0].getAddressLine(0))
-                currentLocation = mResultList[0].getAddressLine(0)
-                currentLocation = currentLocation.substring(11)
-            }
-        }
-    }
-
-    private fun getLatLng() : Location {
-        var currentLatLng: Location? = null
-        if (ActivityCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-            && ActivityCompat.checkSelfPermission(applicationContext,
-                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),this.REQUEST_CODE_LOCATION)
-            getLatLng()
-        }else{
-            val locationProvider = LocationManager.GPS_PROVIDER
-            currentLatLng = locationManager?.getLastKnownLocation(locationProvider)
-        }
-        return currentLatLng!!
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_notepad)
@@ -146,9 +102,7 @@ class Edit_Notepad : AppCompatActivity() {
                 SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
             val formatDate = sdfNow.format(mDate)
             //                현재 시간을 담기위해 호출
-            getLatLng()
-            getCurrentLoc()
-            val loc = currentLocation
+            val loc : String = location.toString()
 //                불러온 값과 수정한 값이 같을경우 취소하고 메인액티비티 호출
             if (title == edit_title && content == edit_content) {
                 val intent1 = Intent(this@Edit_Notepad, MainActivity::class.java)

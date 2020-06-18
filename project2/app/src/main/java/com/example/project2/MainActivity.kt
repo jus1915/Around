@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun searchQuery(query: String) {
         val sql = "select * from noteData " +
-                "where content Like " + "'%" + query + "%'" + "or title Like " + "'%" + query + "%'" + "order by time DESC"
+                "where content Like " + "'%" + query + "%'" + "or title Like " + "'%" + query + "%'" + "or location Like " + "'%" + query + "%'" + "order by time DESC"
         //        sql문
 //        select * from noteData where content Like '%query%' or title Like '%query%' order by time DESC"
 //        select 컬럼 from 테이블 | *는 모든 컬럼을 의미함
@@ -124,7 +124,7 @@ class MainActivity : AppCompatActivity() {
         //        NoteSearchAdapter에 sql문을 전달.
         val cursor = database!!.rawQuery(
             "select * from noteData " +
-                    "where content Like " + "'%" + query + "%'" + "or title Like " + "'%" + query + "%'" + "order by time DESC",
+                    "where content Like " + "'%" + query + "%'" + "or title Like " + "'%" + query + "%'" + "or location Like " + "'%" + query + "%'" + "order by time DESC",
             null
         )
         //        위 문자열 sql과 쿼리 sql문은 같음
