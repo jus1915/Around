@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.list_item_note.view.*
    - Note를 비어 있는 List로 선언(emptyList())
 * */
 class NoteAdapter(var notes: List<NoteEntity> = emptyList()) :
-                            RecyclerView.Adapter<NoteAdapter.ItemViewHolder>() {
+    RecyclerView.Adapter<NoteAdapter.ItemViewHolder>() {
     //note size 반환
     override fun getItemCount() = notes.size
 

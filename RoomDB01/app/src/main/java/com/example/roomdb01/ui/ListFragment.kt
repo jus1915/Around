@@ -17,7 +17,7 @@ class ListFragment : Fragment() {
 
     /* noteDao를 Lazy 키워드를 이용하여 처음 호출될때 초기화하도록 설정 */
     val noteDao by lazy { AppDatabase.getDatabase(requireContext()).noteDao() }
-    
+
     //어댑터 생성
     val noteAdapter = NoteAdapter()
 
@@ -33,7 +33,7 @@ class ListFragment : Fragment() {
         rootView.list_notes.layoutManager = LinearLayoutManager(requireContext())
 
         return rootView// 생성한 fragment_list 뷰 반환
-        
+
     }//end of onCreateView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,4 +54,3 @@ class ListFragment : Fragment() {
         super.onStart()
     }
 }
-

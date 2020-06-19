@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Note 앱</string>
     <string name="select_title">사진을 선택하세요.</string>
+    <string name="hint_notepad_title">Title</string>
+    <string name="save_notepad">Save</string>
+    <string name="hint_notepad_content">Content</string>
+    <string name="location">Location</string>
+    <string name="location_hint">Input the Location</string>
+    <string name="update_location">Bring Location</string>
 </resources>
