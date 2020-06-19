@@ -7,4 +7,30 @@
     <string name="location">Location</string>
     <string name="location_hint">Input the Location</string>
     <string name="update_location">Bring Location</string>
+    <string name="info">This is a personal memo pad application.\nTouch the lock graphic to set the password.</string>
+    <string name="password_setting">Setting Password</string>
+    <string name="Toast_password_limit">[ Password must be 4 characters long. ]</string>
+    <string name="Toast_password_not_change">[ This password is the same as before. ]</string>
+    <string name="Toast_password_ok">[ Your password has been changed : %1$s ]</string>
+    <string name="Toast_password_cancel">[ Password change has been canceled. ]</string>
+    <string name="new_notepad">Add Notepad</string>
+    <string name="open_notepad">Open</string>
+    <string name="delete_notepad">Delete</string>
+    <string name="search">Search</string>
+    <string name="Toast_save">[ Saved ]</string>
+    <string name="Toast_edit">[ Edited ]</string>
+    <string name="Toast_delete">[ Delete ]</string>
+    <string name="Toast_not_save">[ No input, not saved ]</string>
+    <string name="Toast_connect">[ Password Matching ]</string>
+    <string name="Toast_denied">[ Password Mismatch, Denied Connection ]</string>
+    <!--    바뀌는 값이 문자열일시 : %1$s       ||      바뀌는 값이 정수일경우 : %1$d -->
+    <string name="notepad_last_edit_time">last edit time : </string>
+    <string name="notepad_last_edit_location">initial input location : </string>
+    <string name="hint_password">default password is 0000.</string>
+    <string name="password_title">Enter Password</string>
+    <string name="delete_note">Delete note?</string>
+    <string name="delete_hint">If you delete note, data will be lost.</string>
+    <string name="password_hint">If you forget your password, delete it and reinstall it to initialize it.</string>
+    <string name="password_hint2">Please be careful because all data will be lost when deleted.</string>
+
 </resources>

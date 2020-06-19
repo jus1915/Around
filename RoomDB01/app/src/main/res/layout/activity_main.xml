@@ -23,9 +23,9 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:layout_gravity="bottom"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="#FF6A5ACD"
         app:fabCradleMargin="8dp"
-        app:hideOnScroll="true" />
+        app:hideOnScroll="true"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add_note"

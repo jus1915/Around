@@ -1,21 +1,26 @@
 package com.example.roomdb01
 
+import android.app.Activity
+import android.content.Intent
+import android.icu.text.IDNA
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.inputmethod.InputMethodManager
+import android.widget.SearchView
 import androidx.navigation.findNavController
 import com.example.roomdb01.dialog.NoteCreateDialog
 import com.google.android.material.bottomappbar.BottomAppBar
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         //nav_Graph에서 정의한 Destination action들을 수행하기 위한 NavController 가져오기
         val controller = findNavController(R.id.my_nav_host_fragment)
-
         /* DestinationChangedListener를 통해 destination이 바뀔 때 동적으로 아이콘 변경 */
         controller.addOnDestinationChangedListener { controller, destination, arguments ->
 
@@ -48,6 +53,10 @@ class MainActivity : AppCompatActivity() {
         }//end of  controller.addOnDestinationChangedListener
     }//end of onCreate
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
     override fun onDestroy() {
         super.onDestroy()
     }
