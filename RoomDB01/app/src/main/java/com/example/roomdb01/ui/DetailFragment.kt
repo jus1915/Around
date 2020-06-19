@@ -44,6 +44,8 @@ class DetailFragment : Fragment() {
         dao.selectLiveNote(noteId).observe(viewLifecycleOwner, Observer {
             view.txt_detail_title.setText(it.noteTitle)
             view.txt_detail_content.setText(it.noteContent)
+            view.txt_detail_location.setText("작성 위치 : " + it.noteLocation)
+            view.txt_detail_time.setText("마지막 수정 시간 : " + it.noteTime)
             it.noteImage?.let { uri -> view.img_profile.setImageURI(Uri.parse(uri)) }
         })
 

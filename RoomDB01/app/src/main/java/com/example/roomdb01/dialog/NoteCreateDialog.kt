@@ -17,6 +17,8 @@ import kotlinx.android.synthetic.main.dialog_note_create.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.*
 
 /* Create 다이얼로그 프래그먼트
    - BottomSheetImagePicker.OnImagesSelectedListener 구현
@@ -29,7 +31,9 @@ class NoteCreateDialog : DialogFragment(), BottomSheetImagePicker.OnImagesSelect
         NoteEntity(
             noteContent = "",
             noteTitle = "",
-            noteImage = null
+            noteImage = null,
+            noteLocation = "",
+            noteTime = ""
         )
 
     //noteDao 참조
@@ -76,6 +80,7 @@ class NoteCreateDialog : DialogFragment(), BottomSheetImagePicker.OnImagesSelect
                     note = it //쿼리한 노트 객체를 note에 저장
                     view.txt_title.setText(it.noteTitle)
                     view.txt_content.setText(it.noteContent)
+                    view.txt_location.setText(it.noteLocation)
                     it.noteImage?.let { noteImage ->
                         view.img_profile.setImageURI(Uri.parse(noteImage))
                     }
@@ -87,9 +92,14 @@ class NoteCreateDialog : DialogFragment(), BottomSheetImagePicker.OnImagesSelect
         //수정하고 저장하기 버튼을 클릭한 경우(DB에 수정사항 저장)
         view.btn_save.setOnClickListener {
             //입력한 noteTitle, noteContent 가져와서 변수에 할당
+            val now = System.currentTimeMillis()
+            val mDate = Date(now)
+            val sdfNow =
+                SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
             note.noteTitle = view.txt_title.text.toString()
             note.noteContent = view.txt_content.text.toString()
-
+            note.noteLocation = view.txt_location.text.toString()
+            note.noteTime = sdfNow.format(mDate)
             /* 제목과 내용이 다 있는지를 검증 */
             if (note.noteTitle.isBlank() && note.noteContent.isBlank()) {
                 Toast.makeText(requireContext(), "제목과 내용을 입력해주세요", Toast.LENGTH_LONG).show()
@@ -100,7 +110,9 @@ class NoteCreateDialog : DialogFragment(), BottomSheetImagePicker.OnImagesSelect
                         noteIdx = note.noteIdx,
                         noteTitle = note.noteTitle,
                         noteContent = note.noteContent,
-                        noteImage = note.noteImage
+                        noteImage = note.noteImage,
+                        noteLocation = note.noteLocation,
+                        noteTime = note.noteTime
                     )
                     dao.insertNotes(note)//DB에 저장
                     dismiss()//다이얼로드 종료

@@ -9,5 +9,7 @@ data class NoteEntity (
     var noteIdx: Long? = null,
     var noteTitle: String,
     var noteContent: String,
-    var noteImage: String?
+    var noteImage: String?,
+    var noteLocation: String,
+    var noteTime: String
 )

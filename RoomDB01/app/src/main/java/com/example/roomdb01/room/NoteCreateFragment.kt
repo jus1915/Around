@@ -15,14 +15,20 @@ import kotlinx.android.synthetic.main.dialog_note_create.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.*
 
 class NoteCreateFragment : DialogFragment(),BottomSheetImagePicker.OnImagesSelectedListener {
     private var note =
         NoteEntity(
             noteContent = "",
             noteTitle = "",
-            noteImage = null
+            noteImage = null,
+            noteTime = "",
+            noteLocation = ""
         )
+    var currentLocation : String = "위치정보 없음"
+
     private val dao by lazy { AppDatabase.getDatabase(requireContext()).noteDao() }
 
     override fun onCreateView(
@@ -56,6 +62,7 @@ class NoteCreateFragment : DialogFragment(),BottomSheetImagePicker.OnImagesSelec
                     note=it
                     view.txt_title.setText(it.noteTitle)
                     view.txt_content.setText(it.noteContent)
+                    view.txt_location.setText(it.noteLocation)
                     it.noteImage?.let{noteImage ->
                         view.img_profile.setImageURI(Uri.parse(noteImage))
                     }
@@ -63,9 +70,14 @@ class NoteCreateFragment : DialogFragment(),BottomSheetImagePicker.OnImagesSelec
             }
         }
         view.btn_save.setOnClickListener {
+            val now = System.currentTimeMillis()
+            val mDate = Date(now)
+            val sdfNow =
+                SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
             note.noteTitle = view.txt_title.text.toString()
             note.noteContent = view.txt_content.text.toString()
-
+            note.noteLocation=view.txt_location.text.toString()
+            note.noteTime = sdfNow.format(mDate)
             if (note.noteTitle.isBlank() && note.noteContent.isBlank()){
                 Toast.makeText(requireContext(),"제목과 내용을 입력해주세요",Toast.LENGTH_LONG).show()
             }else{
@@ -74,7 +86,9 @@ class NoteCreateFragment : DialogFragment(),BottomSheetImagePicker.OnImagesSelec
                         noteIdx = note.noteIdx,
                         noteTitle = note.noteTitle,
                         noteContent = note.noteContent,
-                        noteImage = note.noteImage
+                        noteImage = note.noteImage,
+                        noteLocation = note.noteLocation,
+                        noteTime = note.noteTime
                     )
                     dao.insertNotes(note)
                     dismiss()

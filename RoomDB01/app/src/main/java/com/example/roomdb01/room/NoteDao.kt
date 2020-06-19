@@ -9,13 +9,13 @@ interface NoteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNotes(vararg notes: NoteEntity)
 
-    @Query("SELECT * FROM NoteEntity WHERE noteIdx = :noteIdx")
+    @Query("SELECT * FROM NoteEntity WHERE noteIdx = :noteIdx ORDER BY noteTime DESC")
     fun selectNote(noteIdx: Long): NoteEntity?
 
-    @Query("SELECT * FROM NoteEntity")
+    @Query("SELECT * FROM NoteEntity ORDER BY noteTime DESC")
     fun selectNotes(): LiveData<List<NoteEntity>>
 
-    @Query("SELECT * FROM NoteEntity WHERE noteIdx = :noteIdx")
+    @Query("SELECT * FROM NoteEntity WHERE noteIdx = :noteIdx ORDER BY noteTime DESC")
     fun selectLiveNote(noteIdx: Long): LiveData<NoteEntity>
 
     @Update

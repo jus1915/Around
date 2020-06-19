@@ -41,7 +41,7 @@ class NoteAdapter(var notes: List<NoteEntity> = emptyList()) :
         fun bindItems(note: NoteEntity) {
             /* Title 맵핑하기 */
             itemView.item_txt_title.text = note.noteTitle
-
+            itemView.item_txt_content.text = note.noteContent
             /* Note Image가 있다면?*/
             note.noteImage?.let {
                 itemView.item_profile_image.visibility = View.VISIBLE
