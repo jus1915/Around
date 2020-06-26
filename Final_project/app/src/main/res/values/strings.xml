@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">주변 다이어리</string>\
+    <string name="select_title">사진을 선택하세요.</string>
+    <string name="hint_notepad_title">Title</string>
+    <string name="save_notepad">Save</string>
+    <string name="hint_notepad_content">Content</string>
+    <string name="location">Location</string>
+    <string name="location_hint">Input the Location</string>
+    <string name="update_location">Bring Location</string>
+    <string name="info">\n비밀번호를 입력해야만 읽을 수 있는 나만의 메모장입니다.\n1. 메모 작성시 위치를 함께 저장해보세요. 검색 시 유용합니다.\n2. 사진을 함께 저장할 수 있습니다. 메모에 필요한 이미지를 함께 저장하세요.\n3. 암호는 언제든지 변경할 수 있습니다. 보안을 강화하세요.\n4. 하단의 +버튼을 눌러 메모를 작성해보세요.</string>
+    <string name="password_setting">비밀번호 변경</string>
+    <string name="Toast_password_limit">[ 비밀번호는 4자리 입니다. ]</string>
+    <string name="Toast_password_not_change">[ 비밀번호가 이전과 동일합니다. ]</string>
+    <string name="Toast_password_ok">[ 비밀번호가 변경되었습니다. : %1$s ]</string>
+    <string name="Toast_password_cancel">[ Password change has been canceled. ]</string>
+    <string name="new_notepad">Add Notepad</string>
+    <string name="open_notepad">Open</string>
+    <string name="delete_notepad">Delete</string>
+    <string name="search">Search</string>
+    <string name="Toast_save">[ Saved ]</string>
+    <string name="Toast_edit">[ Edited ]</string>
+    <string name="Toast_delete">[ Delete ]</string>
+    <string name="Toast_not_save">[ No input, not saved ]</string>
+    <string name="Toast_connect">비밀번호가 일치합니다.</string>
+    <string name="Toast_denied">비밀번호가 일치하지 않습니다.</string>
+    <string name="notepad_last_edit_time">last edit time : </string>
+    <string name="notepad_last_edit_location">initial input location : </string>
+    <string name="hint_password">초기 비밀번호는 0000 입니다.</string>
+    <string name="password_title">비밀번호 입력</string>
+    <string name="delete_note">Delete note?</string>
+    <string name="delete_hint">If you delete note, data will be lost.</string>
+    <string name="password_hint">비밀번호 분실 시, 어플을 삭제 후 다시 설치해주세요.</string>
+    <string name="password_hint2">삭제 시 모든 기록이 삭제되오니 유의바랍니다.</string>
+
+</resources>
