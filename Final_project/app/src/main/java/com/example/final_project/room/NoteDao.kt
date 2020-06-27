@@ -27,4 +27,9 @@ interface NoteDao {
 
     @Query("DELETE FROM NoteEntity WHERE noteIdx = :noteIdx")
     fun deleteNote(noteIdx: Long)
+
+    @Query("SELECT * FROM NoteEntity WHERE (noteTitle LIKE :search) || (noteContent LIKE :search) || (noteLocation LIKE :search) ORDER BY noteTime DESC")
+    fun searchNotes(search: String):LiveData<List<NoteEntity>>
+
+
 }
